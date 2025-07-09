@@ -81,7 +81,7 @@ const Register = () => {
 
       <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg border border-[#E6F4EA]">
         {/* Page title */}
-        <h2 className="text-2xl font-bold text-center mb-6 text-[#3CB371]">
+        <h2 className="text-3xl font-bold text-center mb-6 text-[#3CB371]">
           Create your account
         </h2>
 

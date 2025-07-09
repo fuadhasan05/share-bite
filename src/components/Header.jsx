@@ -68,7 +68,7 @@ const Header = () => {
               )}
               <button
                 className="btn btn-sm"
-                style={{ backgroundColor: "#FFD600", color: "#222", border: "none" }}
+                style={{ borderColor: "#3CB371", color: "#3CB371" }}
                 onClick={logOut}
               >
                 Logout
@@ -169,7 +169,7 @@ const Header = () => {
                 )}
                 <button
                   className="btn btn-sm flex-1"
-                  style={{ backgroundColor: "#FFD600", color: "#222", border: "none" }}
+                  style={{ borderColor: "#3CB371", color: "#3CB371" }}
                   onClick={() => { setMenuOpen(false); logOut(); }}
                 >
                   Logout

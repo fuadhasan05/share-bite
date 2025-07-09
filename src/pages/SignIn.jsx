@@ -47,7 +47,7 @@ const SignIn = () => {
     <div className="min-h-screen flex items-center justify-center px-4">
       <ToastContainer position="top-right" autoClose={1500} />
       <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg border border-[#E6F4EA]">
-        <h2 className="text-2xl font-bold text-center mb-6 text-[#3CB371]">
+        <h2 className="text-3xl font-bold text-center mb-6 text-[#3CB371]">
           Sign in to Share Bite
         </h2>
         <form onSubmit={handleLogin} className="space-y-5">
