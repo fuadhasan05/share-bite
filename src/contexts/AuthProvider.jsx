@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  console.log(user);
+  // console.log(user);
 
   // Create-user
   const createUser = (email, password) => {
