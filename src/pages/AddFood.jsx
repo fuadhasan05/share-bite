@@ -1,5 +1,15 @@
 import React from "react";
 
+const handleAddFood = (e) => {
+  e.preventDefault();
+  const form = e.target;
+
+  const formData = new FormData(form);
+  const newFood = Object.fromEntries(formData.entries());
+
+  console.log(newFood);
+};
+
 const AddFood = () => {
   return (
     <div className="px-24">
@@ -10,7 +20,7 @@ const AddFood = () => {
           are required unless marked optional.
         </p>
       </div>
-      <form>
+      <form onSubmit={handleAddFood}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
             <label className="label">Food Name</label>
@@ -73,7 +83,7 @@ const AddFood = () => {
         </fieldset>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border my-6 p-4">
           <label className="label">Food Status</label>
-          <input type="text" name="status" className="input w-full" readOnly />
+          <input type="text" name="status" className="input w-full" />
         </fieldset>
         <input type="submit" className="btn w-full" value="Add Food" />
       </form>
