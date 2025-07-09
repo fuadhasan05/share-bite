@@ -1,10 +1,43 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router'
+import MainLayout from './layouts/MainLayout'
+import Home from './pages/Home'
+import AuthProvider from './contexts/AuthProvider'
 import './index.css'
-import App from './App.jsx'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import AvailableFood from './pages/AvailableFood'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    Component: MainLayout,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: 'available-foods',
+        Component: AvailableFood,
+      },
+      {
+        path: 'signin',
+        Component: SignIn,
+      },
+      {
+        path: 'signup',
+        Component: SignUp,
+      },
+    ],
+  },
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </StrictMode>
 )
