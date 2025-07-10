@@ -13,6 +13,7 @@ import ManageFoods from "./pages/ManageFoods";
 import FoodRequest from "./pages/FoodRequest";
 import PrivateRoute from "./routes/PrivateRoute";
 import axios from "axios";
+import FoodDetails from "./components/FoodDetails";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,16 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddFood></AddFood>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "food/:id",
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/food/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <FoodDetails/>
           </PrivateRoute>
         ),
       },
