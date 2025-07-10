@@ -12,6 +12,7 @@ import AddFood from "./pages/AddFood";
 import ManageFoods from "./pages/ManageFoods";
 import FoodRequest from "./pages/FoodRequest";
 import PrivateRoute from "./routes/PrivateRoute";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: "available-foods",
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/foods`),
         Component: AvailableFood,
       },
       {

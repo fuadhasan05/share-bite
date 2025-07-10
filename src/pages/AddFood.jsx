@@ -1,42 +1,44 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthProvider";
-
-const handleAddFood = (e) => {
-  e.preventDefault();
-  const form = e.target;
-
-  const formData = new FormData(form);
-  const newFood = Object.fromEntries(formData.entries());
-
-  console.log(newFood);
-
-  // save coffee data
-  fetch(`${import.meta.env.VITE_API_URL}/add-food`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(newFood),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      Swal.fire({
-        title: "Good Job!",
-        text: "Data Added Successfully",
-        icon: "success",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  console.log(newFood);
-};
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const AddFood = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+
+  const handleAddFood = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const formData = new FormData(form);
+    const newFood = Object.fromEntries(formData.entries());
+
+    console.log(newFood);
+
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/add-food`, newFood)
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          title: "Good Job!",
+          text: "Data Added Successfully",
+          icon: "success",
+        });
+        form.reset();
+        navigate("/available-foods");
+      })
+      .catch((error) => {
+        console.error("There was an error adding the food:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "There was an error adding the food. Please try again.",
+          icon: "error",
+        });
+      });
+  };
+
   return (
     <div className="px-24 py-12">
       <div className=" text-center space-y-4">
@@ -82,8 +84,8 @@ const AddFood = () => {
           <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
             <label className="label">Expired Date</label>
             <input
-              type="datetime-local"
-              name="expiredDateTime"
+              type="date-local"
+              name="expiredDate"
               className="input w-full"
               required
             />
