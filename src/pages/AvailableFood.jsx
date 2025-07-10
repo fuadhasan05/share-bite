@@ -9,7 +9,7 @@ const AvailableFood = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-12">
-        {/* Coffee Cards */}
+        {/* Food Cards */}
         {foodData.map((food) => (
           <FoodCard key={food._id} food={food} />
         ))}

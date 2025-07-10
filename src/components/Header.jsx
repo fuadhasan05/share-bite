@@ -1,17 +1,12 @@
-import { useContext, useState } from 'react'
-import { Link, useLocation } from 'react-router'
-import { AuthContext } from '../contexts/AuthProvider'
+import { useContext, useState } from 'react';
+import { Link, useLocation } from 'react-router';
+import { AuthContext } from '../contexts/AuthProvider';
 import logo from "../assets/icon.png";
 
+// Static public navigation
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/available-foods', label: 'Available Foods' },
-];
-
-const userLinks = [
-  { to: '/addfood', label: 'Add Food' },
-  { to: '/manage-my-food', label: 'Manage My Foods' },
-  { to: '/my-food-request', label: 'My Food Request' },
 ];
 
 const Header = () => {
@@ -20,6 +15,15 @@ const Header = () => {
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
+
+  // ✅ Dynamic user links with email
+  const userLinks = user
+    ? [
+        { to: '/addfood', label: 'Add Food' },
+        { to: `/manage-my-food/${user.email}`, label: 'Manage My Foods' },
+        { to: '/my-food-request', label: 'My Food Request' },
+      ]
+    : [];
 
   return (
     <header className="sticky top-0 z-50">
@@ -42,7 +46,7 @@ const Header = () => {
               </Link>
             </li>
           ))}
-          {user && userLinks.map(link => (
+          {userLinks.map(link => (
             <li key={link.to}>
               <Link
                 to={link.to}
@@ -144,7 +148,7 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-            {user && userLinks.map(link => (
+            {userLinks.map(link => (
               <li key={link.to}>
                 <Link
                   to={link.to}
@@ -170,7 +174,10 @@ const Header = () => {
                 <button
                   className="btn btn-sm flex-1"
                   style={{ borderColor: "#3CB371", color: "#3CB371" }}
-                  onClick={() => { setMenuOpen(false); logOut(); }}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    logOut();
+                  }}
                 >
                   Logout
                 </button>
@@ -198,7 +205,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {/* Overlay for mobile menu */}
+
+      {/* Overlay */}
       {menuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-30 z-30 lg:hidden"

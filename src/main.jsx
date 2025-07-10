@@ -48,18 +48,19 @@ const router = createBrowserRouter([
       {
         path: "food/:id",
         loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/food/${params.id}`),
+          axios(`${import.meta.env.VITE_API_URL}/food/${params.id}`),
         element: (
           <PrivateRoute>
-            <FoodDetails/>
+            <FoodDetails />
           </PrivateRoute>
         ),
       },
       {
-        path: "manage-my-food",
+        path: "manage-my-food/:email",
+        loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/manage-my-food/${params.email}`),
         element: (
           <PrivateRoute>
-            <ManageFoods></ManageFoods>
+            <ManageFoods/>
           </PrivateRoute>
         ),
       },
