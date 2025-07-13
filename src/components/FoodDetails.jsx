@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
-import { useLoaderData } from "react-router";
+import { use, useState } from "react";
+import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const FoodDetails = () => {
   const food = useLoaderData();
-  const { user } = useContext(AuthContext);
+  const { user } = use(AuthContext);
   const [notes, setNotes] = useState("");
+  const navigate = useNavigate();
   const requestDate = new Date().toLocaleString();
   const {
     _id,
@@ -23,7 +24,7 @@ const FoodDetails = () => {
   return (
     <div className="max-w-3xl mx-auto py-12 px-4">
       <button
-        // onClick={() => navigate(-1)}
+        onClick={() => navigate(-1)}
         className="mb-6 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition"
       >
         &larr; Back

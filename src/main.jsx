@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "food/:id",
         loader: ({ params }) =>
-          axios(`${import.meta.env.VITE_API_URL}/food/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/food/${params.id}`),
         element: (
           <PrivateRoute>
             <FoodDetails />
