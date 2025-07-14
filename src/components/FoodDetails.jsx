@@ -1,6 +1,8 @@
 import { use, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const FoodDetails = () => {
   const food = useLoaderData();
@@ -20,7 +22,43 @@ const FoodDetails = () => {
     donorEmail,
   } = food || {};
 
-  console.log(food);
+  // console.log(food);
+
+  // handle food request submission
+const handleFoodRequest = async (e) => {
+  e.preventDefault();
+  const requestInfo = {
+    requesterEmail: user?.email,
+    notes,
+    requestDate,
+  };
+
+  try {
+    await axios.post(
+      `${import.meta.env.VITE_API_URL}/place-request/${_id}`,
+      requestInfo
+    );
+
+    Swal.fire({
+      title: "Success!",
+      text: "Food requested successfully.",
+      icon: "success",
+      confirmButtonColor: "#3CB371",
+    });
+
+    setNotes("");
+    document.getElementById("foodRequestModal").close();
+    navigate("/my-requested-foods");
+  } catch (err) {
+    Swal.fire({
+      title: "Error!",
+      text: err.response?.data?.message || "Failed to request food.",
+      icon: "error",
+      confirmButtonColor: "#d33",
+    });
+  }
+};
+
   return (
     <div className="max-w-3xl mx-auto py-12 px-4">
       <button
@@ -128,6 +166,7 @@ const FoodDetails = () => {
 
                     <div className="modal-action">
                       <button
+                        onClick={handleFoodRequest}
                         type="submit"
                         className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
                       >

@@ -21,7 +21,7 @@ const Header = () => {
     ? [
         { to: '/addfood', label: 'Add Food' },
         { to: `/manage-my-food/${user.email}`, label: 'Manage My Foods' },
-        { to: '/my-food-request', label: 'My Food Request' },
+        { to: '/my-requested-foods', label: 'My Food Request' },
       ]
     : [];
 
