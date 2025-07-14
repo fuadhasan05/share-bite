@@ -1,10 +1,35 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useLoaderData } from "react-router";
+import axios from "axios";
 
 const ManageFood = () => {
   const foods = useLoaderData();
-  const [foodData] = useState(foods.data || []);
+  const [foodData, setFoodData] = useState(foods.data || []);
+
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This food will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(
+          `${import.meta.env.VITE_API_URL}/delete-food/${id}`
+        );
+        setFoodData(foodData.filter((food) => food._id !== id));
+        Swal.fire("Deleted!", "The food has been deleted.", "success");
+      } catch {
+        Swal.fire("Error", "Failed to delete food.", "error");
+      }
+    }
+  };
 
   return (
     <div className="p-4 overflow-x-auto">
