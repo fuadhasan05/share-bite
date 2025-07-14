@@ -14,6 +14,7 @@ import FoodRequest from "./pages/FoodRequest";
 import PrivateRoute from "./routes/PrivateRoute";
 import axios from "axios";
 import FoodDetails from "./components/FoodDetails";
+import UpdateFood from "./pages/UpdateFood";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <FoodRequest></FoodRequest>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update-food/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateFood />
           </PrivateRoute>
         ),
       },
