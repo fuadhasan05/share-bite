@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router";
 import Banner from "../components/Banner";
 import FeaturedFoods from "../components/FeaturedFoods";
 import HowItWorks from "../components/HowItWorks";
+import WhoWeServe from "../components/WhoWeServe";
 
 const Home = () => {
   const foods = useLoaderData();
@@ -10,6 +11,7 @@ const Home = () => {
       <Banner />
       <FeaturedFoods foods={foods} />
       <HowItWorks></HowItWorks>
+      <WhoWeServe></WhoWeServe>
     </div>
   );
 };
