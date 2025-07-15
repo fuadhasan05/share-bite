@@ -15,123 +15,128 @@ const AddFood = () => {
     const formData = new FormData(form);
     const newFood = Object.fromEntries(formData.entries());
 
-    console.log(newFood);
-
     axios
       .post(`${import.meta.env.VITE_API_URL}/add-food`, newFood)
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         Swal.fire({
           title: "Good Job!",
-          text: "Data Added Successfully",
+          text: "Food added successfully.",
           icon: "success",
+          confirmButtonColor: "#2F855A",
         });
         form.reset();
         navigate("/available-foods");
       })
       .catch((error) => {
-        console.error("There was an error adding the food:", error);
+        console.error("Error adding food:", error);
         Swal.fire({
-          title: "Error!",
-          text: "There was an error adding the food. Please try again.",
+          title: "Oops!",
+          text: "Something went wrong. Please try again.",
           icon: "error",
         });
       });
   };
 
   return (
-    <div className="px-24 py-12">
-      <div className=" text-center space-y-4">
-        <h1 className="text-6xl">Add Food</h1>
-        <p>
-          Please fill out the form below to add a new food donation. All fields
-          are required unless marked optional.
+    <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="text-center mb-10 space-y-4">
+        <h1 className="text-5xl font-extrabold text-green-800">Add Food</h1>
+        <p className="text-gray-600 text-lg max-w-xl mx-auto">
+          Please fill out the form below to add a new food donation. All fields are required unless marked optional.
         </p>
       </div>
-      <form className="py-12" onSubmit={handleAddFood}>
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-6">
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+
+      <form onSubmit={handleAddFood} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <fieldset className="bg-base-200 p-4 rounded-lg border border-base-300">
             <label className="label">Food Name</label>
             <input
               type="text"
               name="foodName"
-              className="input w-full"
-              placeholder="Food Name"
+              className="input input-bordered w-full"
+              placeholder="Enter food name"
               required
             />
           </fieldset>
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-            <label className="label">Food Quantity</label>
+
+          <fieldset className="bg-base-200 p-4 rounded-lg border border-base-300">
+            <label className="label">Quantity</label>
             <input
               type="number"
               name="foodQuantity"
-              className="input w-full"
-              placeholder="Quantity"
+              className="input input-bordered w-full"
+              placeholder="Enter quantity"
               min="1"
               required
             />
           </fieldset>
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+
+          <fieldset className="bg-base-200 p-4 rounded-lg border border-base-300">
             <label className="label">Pickup Location</label>
             <input
               type="text"
               name="pickupLocation"
-              className="input w-full"
-              placeholder="Pickup Location"
+              className="input input-bordered w-full"
+              placeholder="Enter pickup location"
               required
             />
           </fieldset>
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+
+          <fieldset className="bg-base-200 p-4 rounded-lg border border-base-300">
             <label className="label">Expired Date</label>
             <input
-              type="date-local"
+              type="date"
               name="expiredDate"
-              className="input w-full"
+              className="input input-bordered w-full"
               required
             />
           </fieldset>
         </div>
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border my-6 p-4">
-          <label className="label">Food Image (URL)</label>
+
+        <fieldset className="bg-base-200 p-4 rounded-lg border border-base-300">
+          <label className="label">Food Image URL</label>
           <input
             type="text"
             name="foodImage"
-            className="input w-full"
-            placeholder="Food Image URL"
+            className="input input-bordered w-full"
+            placeholder="Enter image URL"
             required
           />
         </fieldset>
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border my-6 p-4">
+
+        <fieldset className="bg-base-200 p-4 rounded-lg border border-base-300">
           <label className="label">Additional Notes</label>
           <textarea
             name="notes"
-            className="input w-full"
-            placeholder="Any additional notes (optional)"
-          />
+            className="textarea textarea-bordered w-full"
+            placeholder="Optional notes (e.g., contains nuts, fresh baked)"
+          ></textarea>
         </fieldset>
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border my-6 p-4">
+
+        <fieldset className="bg-base-200 p-4 rounded-lg border border-base-300">
           <label className="label">Food Status</label>
           <input
             type="text"
             name="status"
-            className="input w-full"
+            className="input input-bordered w-full"
             value="Available"
             readOnly
           />
         </fieldset>
-        {/* Donor Section - prefilled and read-only */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border my-6 p-4 items-center gap-4">
+
+        {/* Donor Info */}
+        <fieldset className="bg-base-200 p-4 rounded-lg border border-base-300 flex items-center gap-4">
           <img
-            src={user?.photoURL}
+            src={user?.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
             alt="Donor"
-            className="rounded-full w-16 h-16"
+            className="w-16 h-16 rounded-full object-cover"
           />
-          <div>
+          <div className="w-full">
             <label className="label">Donor Name</label>
             <input
               type="text"
               name="donorName"
-              className="input w-full mb-2"
+              className="input input-bordered w-full mb-2"
               value={user?.displayName || ""}
               readOnly
             />
@@ -139,13 +144,18 @@ const AddFood = () => {
             <input
               type="email"
               name="donorEmail"
-              className="input w-full"
+              className="input input-bordered w-full"
               value={user?.email || ""}
               readOnly
             />
           </div>
         </fieldset>
-        <input type="submit" className="btn w-full" value="Add Food" />
+
+        <input
+          type="submit"
+          value="Add Food"
+          className="btn bg-green-600 text-white w-full hover:bg-green-700 transition-all"
+        />
       </form>
     </div>
   );

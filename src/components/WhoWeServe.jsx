@@ -69,7 +69,7 @@ const WhoWeServe = () => {
                 <p className="text-gray-600 mb-6">
                   Register your pantry and receive fresh food from local donors.
                 </p>
-                <Link to="/register-pantry">
+                <Link to="/signup">
                   <button className="w-full bg-[#F4B400] text-[#1F2937] font-bold uppercase py-3 rounded-xl hover:bg-[#E9A800] transition-all">
                     Register Pantry
                   </button>
