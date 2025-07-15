@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router';
 import { AuthContext } from '../contexts/AuthProvider';
 import logo from "../assets/icon.png";
 
-// Static public navigation
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/available-foods', label: 'Available Foods' },
@@ -16,7 +15,6 @@ const Header = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  // ✅ Dynamic user links with email
   const userLinks = user
     ? [
         { to: '/addfood', label: 'Add Food' },
@@ -26,31 +24,23 @@ const Header = () => {
     : [];
 
   return (
-    <header className="sticky top-0 z-50">
-      <nav className="container mx-auto px-4 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="w-10 h-10" />
-          <span className="text-xl font-bold tracking-tight text-[#3CB371]">Share Bite</span>
+    <header className="sticky top-0 z-50 bg-white shadow-md">
+      <nav className="container mx-auto px-4 flex items-center justify-between h-20">
+        {/* Logo and Title */}
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} alt="Logo" className="w-12 h-12" />
+          <span className="text-2xl font-semibold text-[#2F855A]">ShareBite</span>
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="hidden lg:flex gap-6 items-center">
-          {navLinks.map(link => (
+        <ul className="hidden lg:flex gap-8 items-center">
+          {[...navLinks, ...userLinks].map(link => (
             <li key={link.to}>
               <Link
                 to={link.to}
-                className={`font-medium transition-colors duration-200 hover:text-[#3CB371] ${isActive(link.to) ? 'text-[#3CB371] underline underline-offset-4' : 'text-[#222]'}`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          {userLinks.map(link => (
-            <li key={link.to}>
-              <Link
-                to={link.to}
-                className={`font-medium transition-colors duration-200 hover:text-[#3CB371] ${isActive(link.to) ? 'text-[#3CB371] underline underline-offset-4' : 'text-[#222]'}`}
+                className={`text-lg font-medium transition hover:text-[#2F855A] ${
+                  isActive(link.to) ? 'text-[#2F855A] underline underline-offset-4' : 'text-gray-700'
+                }`}
               >
                 {link.label}
               </Link>
@@ -58,22 +48,21 @@ const Header = () => {
           ))}
         </ul>
 
-        {/* Desktop Auth/User */}
+        {/* Auth Buttons */}
         <div className="hidden lg:flex items-center gap-4">
           {user ? (
             <>
               {user.photoURL && (
                 <img
                   src={user.photoURL}
-                  referrerPolicy="no-referrer"
                   alt="avatar"
-                  className="w-9 h-9 rounded-full border"
+                  referrerPolicy="no-referrer"
+                  className="w-10 h-10 rounded-xl object-cover border"
                 />
               )}
               <button
-                className="btn btn-sm"
-                style={{ borderColor: "#3CB371", color: "#3CB371" }}
                 onClick={logOut}
+                className="px-4 py-2 rounded-xl text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
               >
                 Logout
               </button>
@@ -82,15 +71,13 @@ const Header = () => {
             <>
               <Link
                 to="/signin"
-                className="btn btn-outline btn-sm"
-                style={{ borderColor: "#3CB371", color: "#3CB371" }}
+                className="px-4 py-2 rounded-xl text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="btn btn-sm"
-                style={{ backgroundColor: "#3CB371", color: "#fff", border: "none" }}
+                className="px-4 py-2 rounded-xl bg-[#2F855A] text-white hover:bg-[#276749] transition"
               >
                 Register
               </Link>
@@ -98,13 +85,17 @@ const Header = () => {
           )}
         </div>
 
-        {/* Hamburger */}
+        {/* Mobile Menu Button */}
         <button
-          className="lg:hidden btn btn-ghost"
-          aria-label="Open Menu"
+          className="lg:hidden focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          <svg className="h-7 w-7" fill="none" stroke="#3CB371" viewBox="0 0 24 24">
+          <svg
+            className="w-8 h-8 text-[#2F855A]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
             {menuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -115,103 +106,74 @@ const Header = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 left-0 w-full bg-[#E6F4EA] shadow-lg transition-transform duration-300 z-40 ${
-          menuOpen ? 'translate-y-0' : '-translate-y-full'
-        } lg:hidden`}
-      >
-        <div className="container mx-auto px-4 pt-4 pb-6 flex flex-col gap-4">
-          <div className="flex items-center justify-between mb-4">
-            <Link to="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-              <img src={logo} alt="Logo" className="w-10 h-10" />
-              <span className="text-2xl font-bold tracking-tight text-[#3CB371]">Share Bite</span>
-            </Link>
-            <button
-              className="btn btn-ghost"
-              aria-label="Close Menu"
-              onClick={() => setMenuOpen(false)}
-            >
-              <svg className="h-7 w-7" fill="none" stroke="#3CB371" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <ul className="flex flex-col gap-2">
-            {navLinks.map(link => (
-              <li key={link.to}>
-                <Link
-                  to={link.to}
-                  className={`btn btn-ghost btn-block text-left ${isActive(link.to) ? 'text-[#3CB371] underline underline-offset-4' : 'text-[#222]'}`}
-                  onClick={() => setMenuOpen(false)}
+      {menuOpen && (
+        <div className="lg:hidden fixed top-0 left-0 w-full h-full bg-white z-40 shadow-lg">
+          <div className="container mx-auto px-4 py-6 flex flex-col gap-6">
+            <div className="flex items-center justify-between">
+              <Link to="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2">
+                <img src={logo} alt="Logo" className="w-10 h-10" />
+                <span className="text-2xl font-semibold text-[#2F855A]">ShareBite</span>
+              </Link>
+              <button onClick={() => setMenuOpen(false)}>
+                <svg
+                  className="w-8 h-8 text-[#2F855A]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            {userLinks.map(link => (
-              <li key={link.to}>
-                <Link
-                  to={link.to}
-                  className={`btn btn-ghost btn-block text-left ${isActive(link.to) ? 'text-[#3CB371] underline underline-offset-4' : 'text-[#222]'}`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="flex flex-col gap-2 mt-4">
-            {user ? (
-              <div className="flex items-center gap-3">
-                {user.photoURL && (
-                  <img
-                    src={user.photoURL}
-                    referrerPolicy="no-referrer"
-                    alt="avatar"
-                    className="w-9 h-9 rounded-full border"
-                  />
-                )}
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <ul className="flex flex-col gap-4">
+              {[...navLinks, ...userLinks].map(link => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    onClick={() => setMenuOpen(false)}
+                    className={`text-lg font-medium block px-4 py-2 rounded-md hover:bg-[#E6F4EA] transition ${
+                      isActive(link.to) ? 'text-[#2F855A] underline' : 'text-gray-700'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-col gap-3 mt-4">
+              {user ? (
                 <button
-                  className="btn btn-sm flex-1"
-                  style={{ borderColor: "#3CB371", color: "#3CB371" }}
                   onClick={() => {
                     setMenuOpen(false);
                     logOut();
                   }}
+                  className="w-full px-4 py-2 rounded-xl text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
                 >
                   Logout
                 </button>
-              </div>
-            ) : (
-              <>
-                <Link
-                  to="/signin"
-                  className="btn btn-outline btn-block"
-                  style={{ borderColor: "#3CB371", color: "#3CB371" }}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="btn btn-block"
-                  style={{ backgroundColor: "#3CB371", color: "#fff", border: "none" }}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Register
-                </Link>
-              </>
-            )}
+              ) : (
+                <>
+                  <Link
+                    to="/signin"
+                    onClick={() => setMenuOpen(false)}
+                    className="w-full px-4 py-2 rounded-xl text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/signup"
+                    onClick={() => setMenuOpen(false)}
+                    className="w-full px-4 py-2 rounded-xl bg-[#2F855A] text-white hover:bg-[#276749] transition"
+                  >
+                    Register
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Overlay */}
-      {menuOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-30 z-30 lg:hidden"
-          onClick={() => setMenuOpen(false)}
-        />
       )}
     </header>
   );
