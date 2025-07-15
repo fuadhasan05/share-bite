@@ -1,10 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthProvider";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
 const AddFood = () => {
+  // Set dynamic title
+  useEffect(() => {
+    document.title = "Share Bite - Add Food";
+  }, []);
+
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
@@ -42,7 +47,8 @@ const AddFood = () => {
       <div className="text-center mb-10 space-y-4">
         <h1 className="text-5xl font-extrabold text-green-800">Add Food</h1>
         <p className="text-gray-600 text-lg max-w-xl mx-auto">
-          Please fill out the form below to add a new food donation. All fields are required unless marked optional.
+          Please fill out the form below to add a new food donation. All fields
+          are required unless marked optional.
         </p>
       </div>
 

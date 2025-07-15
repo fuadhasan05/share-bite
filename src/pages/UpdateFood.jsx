@@ -4,6 +4,11 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const UpdateFood = () => {
+  // Set dynamic title
+  useEffect(() => {
+    document.title = "Share Bite - Update Food";
+  }, []);
+
   const { id } = useParams();
   const navigate = useNavigate();
   const [food, setFood] = useState(null);

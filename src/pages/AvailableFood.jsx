@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FoodCard from "../components/FoodCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const AvailableFood = () => {
+  // Set dynamic title
+  useEffect(() => {
+    document.title = "Share Bite - Available Food";
+  }, []);
+
   const [columns, setColumns] = useState(3);
   const [sortOrder, setSortOrder] = useState("asc");
   const [search, setSearch] = useState("");
@@ -12,7 +17,9 @@ const AvailableFood = () => {
     queryKey: ["available-foods", sortOrder],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/available-foods?sort=expiredDate&order=${sortOrder}`
+        `${
+          import.meta.env.VITE_API_URL
+        }/available-foods?sort=expiredDate&order=${sortOrder}`
       );
       return res.data;
     },
@@ -32,7 +39,9 @@ const AvailableFood = () => {
           Browse Available Foods
         </h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Discover fresh surplus food shared by generous community members. Request meals easily and help reduce food waste while feeding families in need.
+          Discover fresh surplus food shared by generous community members.
+          Request meals easily and help reduce food waste while feeding families
+          in need.
         </p>
       </div>
 
@@ -82,7 +91,9 @@ const AvailableFood = () => {
 
       {/* Food List */}
       {isLoading ? (
-        <div className="text-center text-lg text-gray-500 py-20">Loading available foods...</div>
+        <div className="text-center text-lg text-gray-500 py-20">
+          Loading available foods...
+        </div>
       ) : (
         <div className={`grid grid-cols-1 ${gridColsClass} gap-6`}>
           {filteredFoods.length > 0 ? (

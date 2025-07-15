@@ -19,7 +19,7 @@ const ErrorPage = () => {
           {error?.error?.message || "Something Went Wrong!"}
         </p>
         <Link to="/">
-          <button className="px-8 mt-5 py-2 btn btn-primary rounded hover:bg-green-700 cursor-pointer">
+          <button className="px-8 mt-5 py-2 btn bg-green-600 rounded hover:bg-green-700 cursor-pointer">
             Browse Home
           </button>
         </Link>

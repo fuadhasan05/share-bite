@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useLoaderData } from "react-router";
 import axios from "axios";
 
 const ManageFood = () => {
+  // Set dynamic title
+  useEffect(() => {
+    document.title = "Share Bite - Manage My Food";
+  }, []);
+
   const foods = useLoaderData();
   const [foodData, setFoodData] = useState(foods.data || []);
 
@@ -20,9 +25,7 @@ const ManageFood = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(
-          `${import.meta.env.VITE_API_URL}/delete-food/${id}`
-        );
+        await axios.delete(`${import.meta.env.VITE_API_URL}/delete-food/${id}`);
         setFoodData(foodData.filter((food) => food._id !== id));
         Swal.fire("Deleted!", "The food has been deleted.", "success");
       } catch {
