@@ -2,6 +2,9 @@
 
 ShareBite is a community-driven food sharing platform built with React, Vite, Express, and MongoDB. It enables users to share surplus food, request meals, and help reduce food waste.
 
+### Live 
+https://sharebite25.web.app/
+
 ## Features
 
 - **Browse Available Foods:** View a list of surplus foods shared by the community.
