@@ -5,7 +5,7 @@ import whatWeDoAnimation from "../assets/lotties/what-we-do.json";
 
 const HowItWorks = () => {
   return (
-    <section className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] py-16 px-6 md:px-24 rounded-b-3xl">
+    <section className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] py-16 px-6 md:px-24">
       <h2 className="text-4xl md:text-5xl font-extrabold text-green-800 mb-6 text-center">
         How ShareBite Works
       </h2>
