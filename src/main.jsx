@@ -24,6 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/foods`),
         Component: Home,
       },
       {
@@ -59,10 +60,13 @@ const router = createBrowserRouter([
       },
       {
         path: "manage-my-food/:email",
-        loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/manage-my-food/${params.email}`),
+        loader: ({ params }) =>
+          axios(
+            `${import.meta.env.VITE_API_URL}/manage-my-food/${params.email}`
+          ),
         element: (
           <PrivateRoute>
-            <ManageFoods/>
+            <ManageFoods />
           </PrivateRoute>
         ),
       },
