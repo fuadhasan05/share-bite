@@ -16,6 +16,7 @@ import axios from "axios";
 import FoodDetails from "./components/FoodDetails";
 import UpdateFood from "./pages/UpdateFood";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => axios(`${import.meta.env.VITE_API_URL}/foods`),
+        loader: () => axios.get(`${import.meta.env.VITE_API_URL}/foods`),
         Component: Home,
       },
       {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
             <UpdateFood />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
