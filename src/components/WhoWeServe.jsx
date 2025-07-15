@@ -25,7 +25,7 @@ const WhoWeServe = () => {
             className="bg-white rounded-3xl shadow-md hover:shadow-lg transition-all flex flex-col justify-between items-center overflow-hidden"
           >
             {/* Yellow Top Bar */}
-            <div className="w-full h-3 bg-[#F4B400]"></div>
+            <div className="w-full h-2 bg-[#F4B400]"></div>
 
             <div className="p-8 text-center flex-1 flex flex-col justify-between items-center w-full">
               <div>
@@ -59,7 +59,7 @@ const WhoWeServe = () => {
             className="bg-white rounded-3xl shadow-md hover:shadow-lg transition-all flex flex-col justify-between items-center overflow-hidden"
           >
             {/* Yellow Top Bar */}
-            <div className="w-full h-3 bg-[#F4B400]"></div>
+            <div className="w-full h-2 bg-[#F4B400]"></div>
 
             <div className="p-8 text-center flex-1 flex flex-col justify-between items-center w-full">
               <div>
@@ -92,7 +92,7 @@ const WhoWeServe = () => {
             className="bg-white rounded-3xl shadow-md hover:shadow-lg transition-all flex flex-col justify-between items-center overflow-hidden"
           >
             {/* Yellow Top Bar */}
-            <div className="w-full h-3 bg-[#F4B400]"></div>
+            <div className="w-full h-2 bg-[#F4B400]"></div>
 
             <div className="p-8 text-center flex-1 flex flex-col justify-between items-center w-full">
               <div>
