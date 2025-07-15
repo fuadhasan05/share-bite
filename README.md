@@ -1,12 +1,72 @@
-# React + Vite
+# ShareBite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ShareBite is a community-driven food sharing platform built with React, Vite, Express, and MongoDB. It enables users to share surplus food, request meals, and help reduce food waste.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Browse Available Foods:** View a list of surplus foods shared by the community.
+- **Request Food:** Request available food items; requested foods are tracked and status updated.
+- **Manage My Foods:** Donors can add, update, and delete their food listings.
+- **My Requested Foods:** Users can view all foods they have requested.
+- **Responsive Design:** Modern, mobile-friendly UI with grid and list layouts.
+- **Authentication:** Secure login with Firebase Authentication.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React, Vite, Tailwind CSS, TanStack Query
+- **Backend:** Node.js, Express, MongoDB
+- **Authentication:** Firebase
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js & npm
+- MongoDB instance (local or cloud)
+- Firebase project with service account key
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com
+   cd sharebite
+   ```
+
+2. **Backend Setup:**
+   ```bash
+   cd server
+   npm install
+   # Add your MongoDB URI and Firebase credentials in .env and admin-key.json
+   npm start
+   ```
+
+3. **Frontend Setup:**
+   ```bash
+   cd client
+   npm install
+   npm run dev
+   ```
+
+4. **Environment Variables:**
+   - Create a `.env` file in both `server` and `client` directories.
+   - Set `VITE_API_URL` in `client/.env` to your backend URL.
+
+## Folder Structure
+
+```
+/client   # React frontend
+/server   # Express backend
+```
+
+## Usage
+
+- Register or log in with your email.
+- Add food to share with the community.
+- Browse and request available foods.
+- Manage your own food listings and requests.
+
+
+---
+
+*Made with ❤️ for the community.*
