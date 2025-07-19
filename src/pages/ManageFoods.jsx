@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useLoaderData } from "react-router";
 import axios from "axios";
+import useAxiosSecure from "../utils/useAxiosSecure";
+import { use } from "react";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const ManageFood = () => {
   // Set dynamic title
@@ -10,7 +13,22 @@ const ManageFood = () => {
   }, []);
 
   const foods = useLoaderData();
+  const { user } = use(AuthContext);
   const [foodData, setFoodData] = useState(foods.data || []);
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    const fetchFoods = async () => {
+      try {
+        const res = await axiosSecure.get(`/manage-my-food/${user?.email}`);
+        setFoodData(res.data);
+      } catch (err) {
+        console.error("Failed to load foods:", err);
+      }
+    };
+
+    fetchFoods();
+  }, [user, axiosSecure]);
 
   const handleDelete = async (id) => {
     const result = await Swal.fire({

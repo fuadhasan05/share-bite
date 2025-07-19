@@ -51,9 +51,9 @@ const AvailableFood = () => {
         <div className="flex gap-2">
           <button
             onClick={() => setSortOrder("asc")}
-            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+            className={`px-4 py-2 rounded-xl font-medium transition-all ${
               sortOrder === "asc"
-                ? "bg-green-500 text-white shadow-md"
+                ? "bg-[#2F855A] text-white shadow-md"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
           >
@@ -61,9 +61,9 @@ const AvailableFood = () => {
           </button>
           <button
             onClick={() => setSortOrder("desc")}
-            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+            className={`px-4 py-2 rounded-xl font-medium transition-all ${
               sortOrder === "desc"
-                ? "bg-green-500 text-white shadow-md"
+                ? "bg-[#2F855A] text-white shadow-md"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
           >
@@ -74,7 +74,7 @@ const AvailableFood = () => {
         {/* Layout Toggle */}
         <button
           onClick={() => setColumns(columns === 3 ? 2 : 3)}
-          className="px-4 py-2 rounded-lg bg-yellow-400 text-[#1F2937] font-semibold hover:bg-yellow-500 transition-all"
+          className="px-4 py-2 rounded-xl bg-yellow-400 text-[#1F2937] font-semibold hover:bg-yellow-500 transition-all"
         >
           {columns === 3 ? "2 Column View" : "3 Column View"}
         </button>
@@ -85,7 +85,7 @@ const AvailableFood = () => {
           placeholder="Search by food name..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border border-gray-300 px-4 py-2 rounded-lg w-full md:w-72 focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="border border-gray-300 px-4 py-2 rounded-xl w-full md:w-72 focus:outline-none focus:ring-2 focus:ring-green-400"
         />
       </div>
 

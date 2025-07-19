@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
 import { AuthContext } from "../contexts/AuthProvider";
+import useAxiosSecure from "../utils/useAxiosSecure"; 
 
 const FoodRequest = () => {
-  // Set dynamic title
   useEffect(() => {
     document.title = "Share Bite - Food Requests";
   }, []);
 
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure(); 
   const [requestedFoods, setRequestedFoods] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -16,20 +16,19 @@ const FoodRequest = () => {
     const fetchRequestedFoods = async () => {
       if (!user?.email) return;
       try {
-        const res = await axios.get(
-          `${
-            import.meta.env.VITE_API_URL
-          }/my-requested-foods/${encodeURIComponent(user.email)}`
+        const res = await axiosSecure.get(
+          `/my-requested-foods/${encodeURIComponent(user.email)}`
         );
         setRequestedFoods(res.data);
       } catch (err) {
+        console.error("Error fetching requested foods:", err);
         setRequestedFoods([]);
       } finally {
         setLoading(false);
       }
     };
     fetchRequestedFoods();
-  }, [user?.email]);
+  }, [user?.email, axiosSecure]);
 
   return (
     <div className="p-4 overflow-x-auto">
@@ -56,7 +55,7 @@ const FoodRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {requestedFoods.map((food, idx) => (
+            {requestedFoods.map((food) => (
               <tr key={food._id}>
                 <td>{food.foodName}</td>
                 <td>{food.donorName || "N/A"}</td>

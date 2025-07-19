@@ -97,7 +97,7 @@ const handleFoodRequest = async (e) => {
             <div className="flex gap-4">
               {/* MODEL */}
               <button
-                className="mt-4 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                className="mt-4 px-6 py-2 bg-[#2F855A] text-white rounded-xl hover:bg-green-700 transition"
                 onClick={() =>
                   document.getElementById("foodRequestModal").showModal()
                 }
@@ -168,7 +168,7 @@ const handleFoodRequest = async (e) => {
                       <button
                         onClick={handleFoodRequest}
                         type="submit"
-                        className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                        className="px-6 py-2 bg-[#2F855A] text-white rounded-xl hover:bg-green-700 transition"
                       >
                         Request
                       </button>
@@ -177,7 +177,7 @@ const handleFoodRequest = async (e) => {
                         onClick={() =>
                           document.getElementById("foodRequestModal").close()
                         }
-                        className="ml-3 px-6 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition"
+                        className="ml-3 px-6 py-2 bg-gray-300 text-gray-800 rounded-xl hover:bg-gray-400 transition"
                       >
                         Cancel
                       </button>

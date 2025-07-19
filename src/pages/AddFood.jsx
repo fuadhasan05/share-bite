@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthProvider";
-import axios from "axios";
 import { useNavigate } from "react-router";
+import useAxiosSecure from "../utils/useAxiosSecure";
 
 const AddFood = () => {
   // Set dynamic title
@@ -12,6 +12,7 @@ const AddFood = () => {
 
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure()
 
   const handleAddFood = (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ const AddFood = () => {
     const formData = new FormData(form);
     const newFood = Object.fromEntries(formData.entries());
 
-    axios
+    axiosSecure
       .post(`${import.meta.env.VITE_API_URL}/add-food`, newFood)
       .then(() => {
         Swal.fire({
@@ -160,7 +161,7 @@ const AddFood = () => {
         <input
           type="submit"
           value="Add Food"
-          className="btn bg-green-600 text-white w-full hover:bg-green-700 transition-all"
+          className="btn bg-[#2F855A] text-white rounded-xl w-full hover:bg-green-700 transition-all"
         />
       </form>
     </div>
