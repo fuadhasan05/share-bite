@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 import axios from "axios";
 import useAxiosSecure from "../utils/useAxiosSecure";
 import { use } from "react";
@@ -12,16 +12,17 @@ const ManageFood = () => {
     document.title = "Share Bite - Manage My Food";
   }, []);
 
-  const foods = useLoaderData();
   const { user } = use(AuthContext);
-  const [foodData, setFoodData] = useState(foods.data || []);
+  const [foodData, setFoodData] = useState([]);
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const res = await axiosSecure.get(`/manage-my-food/${user?.email}`);
-        setFoodData(res.data);
+        if (user?.email) {
+          const res = await axiosSecure.get(`/manage-my-food/${user?.email}`);
+          setFoodData(res.data);
+        }
       } catch (err) {
         console.error("Failed to load foods:", err);
       }

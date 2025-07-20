@@ -33,10 +33,16 @@ const handleFoodRequest = async (e) => {
     requestDate,
   };
 
-  try {
+   try {
+    const token = await user.getIdToken(); // Get Firebase token
     await axios.post(
       `${import.meta.env.VITE_API_URL}/place-request/${_id}`,
-      requestInfo
+      requestInfo,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
 
     Swal.fire({
