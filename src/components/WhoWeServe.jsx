@@ -11,7 +11,7 @@ const WhoWeServe = () => {
   };
 
   return (
-    <section className="py-30 bg-gradient-to-br from-[#FFFDEE] via-[#FFF8E7] to-[#FFFDEE]">
+    <section className="py-30">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-extrabold text-green-800 text-center mb-12">
           Who Do We Serve?

@@ -5,7 +5,7 @@ import logo from "../assets/icon.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA]  text-gray-700 py-12">
+    <footer className="text-gray-700 py-12">
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-10">
         
         {/* Left Section - Logo + Mission */}

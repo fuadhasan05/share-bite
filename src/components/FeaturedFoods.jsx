@@ -10,7 +10,7 @@ const FeaturedFoods = ({ foods }) => {
     .slice(0, 6);
 
   return (
-    <section className="py-30 bg-orange-50">
+    <section className="py-30">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-extrabold text-center text-[#2F855A] mb-6">
           Featured Foods

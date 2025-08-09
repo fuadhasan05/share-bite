@@ -5,8 +5,9 @@ import whatWeDoAnimation from "../assets/lotties/what-we-do.json";
 
 const HowItWorks = () => {
   return (
-    <section className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] py-30 px-4 md:px-24">
-      <h2 className="text-3xl md:text-5xl font-extrabold text-green-800 mb-4 text-center">
+    <section className="py-30 px-4 md:px-24 ">
+      <div className="container mx-auto ">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-green-800 mb-4 text-center">
         How ShareBite Works
       </h2>
 
@@ -66,6 +67,7 @@ const HowItWorks = () => {
             Whether you’re a gardener, restaurant, or home cook—post your surplus, skip the waste, and feed your neighbors.
           </p>
         </div>
+      </div>
       </div>
     </section>
   );
