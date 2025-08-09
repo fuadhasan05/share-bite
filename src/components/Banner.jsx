@@ -11,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative flex items-center w-screen overflow-hidden min-h-[70vh]">
+    <section className="relative flex items-center w-screen overflow-hidden min-h-[70vh] mb-16">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100"
@@ -31,7 +31,7 @@ const Hero = () => {
           Share your surplus, find meals, and make a difference <br /> —one bite
           at a time.
         </p>
-        <div className="">
+        <div>
           <Button onClick={handleLearnMore} variant="primary">Learn More</Button>
         </div>
       </div>

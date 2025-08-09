@@ -4,6 +4,7 @@ import gardenerImg from "../assets/lotties/Farmers.json";
 import pantryImg from "../assets/lotties/Food.json";
 import hungryImg from "../assets/lotties/Hungry.json";
 import Lottie from "lottie-react";
+import Button from "./Button/Button";
 
 const WhoWeServe = () => {
   const cardVariants = {
@@ -11,10 +12,13 @@ const WhoWeServe = () => {
   };
 
   return (
-    <section className="py-30">
+    <section className="py-16">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-green-800 text-center mb-12">
-          Who Do We Serve?
+        <h2
+          className="text-3xl font-semibold text-center mb-16"
+          style={{ wordSpacing: "8px" }}
+        >
+          WHO DO WE SERVE?
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -22,10 +26,10 @@ const WhoWeServe = () => {
           <motion.div
             whileHover="hover"
             variants={cardVariants}
-            className="bg-white rounded-3xl shadow-md hover:shadow-lg transition-all flex flex-col justify-between items-center overflow-hidden"
+            className="bg-white rounded-md   flex flex-col justify-between items-center overflow-hidden"
           >
             {/* Yellow Top Bar */}
-            <div className="w-full h-2 bg-[#F4B400]"></div>
+            <div className="w-full h-2 bg-[#f7ca18]"></div>
 
             <div className="p-8 text-center flex-1 flex flex-col justify-between items-center w-full">
               <div>
@@ -33,13 +37,13 @@ const WhoWeServe = () => {
                   Gardeners
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Do you have extra fruits, vegetables, or herbs? Share them with
-                  those in need.
+                  Do you have extra fruits, vegetables, or herbs? Share them
+                  with those in need.
                 </p>
                 <Link to="/addfood">
-                  <button className="w-full bg-[#F4B400] text-[#1F2937] font-bold uppercase py-3 rounded-xl hover:bg-[#E9A800] transition-all">
+                  <Button variant="secondary" className="w-full">
                     Donate Food
-                  </button>
+                  </Button>
                 </Link>
               </div>
               <div className="flex justify-center items-center mt-6">
@@ -56,10 +60,10 @@ const WhoWeServe = () => {
           <motion.div
             whileHover="hover"
             variants={cardVariants}
-            className="bg-white rounded-3xl shadow-md hover:shadow-lg transition-all flex flex-col justify-between items-center overflow-hidden"
+            className="bg-white rounded-md    flex flex-col justify-between items-center overflow-hidden"
           >
             {/* Yellow Top Bar */}
-            <div className="w-full h-2 bg-[#F4B400]"></div>
+            <div className="w-full h-2 bg-[#f7ca18]"></div>
 
             <div className="p-8 text-center flex-1 flex flex-col justify-between items-center w-full">
               <div>
@@ -70,9 +74,9 @@ const WhoWeServe = () => {
                   Register your pantry and receive fresh food from local donors.
                 </p>
                 <Link to="/signup">
-                  <button className="w-full bg-[#F4B400] text-[#1F2937] font-bold uppercase py-3 rounded-xl hover:bg-[#E9A800] transition-all">
+                  <Button variant="secondary" className="w-full">
                     Register Pantry
-                  </button>
+                  </Button>
                 </Link>
               </div>
               <div className="flex justify-center items-center mt-6">
@@ -89,10 +93,10 @@ const WhoWeServe = () => {
           <motion.div
             whileHover="hover"
             variants={cardVariants}
-            className="bg-white rounded-3xl shadow-md hover:shadow-lg transition-all flex flex-col justify-between items-center overflow-hidden"
+            className="bg-white rounded-md    flex flex-col justify-between items-center overflow-hidden"
           >
             {/* Yellow Top Bar */}
-            <div className="w-full h-2 bg-[#F4B400]"></div>
+            <div className="w-full h-2 bg-[#f7ca18]"></div>
 
             <div className="p-8 text-center flex-1 flex flex-col justify-between items-center w-full">
               <div>
@@ -104,9 +108,9 @@ const WhoWeServe = () => {
                   pantries.
                 </p>
                 <Link to="/available-foods">
-                  <button className="w-full bg-[#F4B400] text-[#1F2937] font-bold uppercase py-3 rounded-xl hover:bg-[#E9A800] transition-all">
+                  <Button variant="secondary" className="w-full">
                     Find Food
-                  </button>
+                  </Button>
                 </Link>
               </div>
               <div className="flex justify-center items-center mt-6">

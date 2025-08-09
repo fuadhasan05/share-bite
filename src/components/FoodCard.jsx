@@ -1,10 +1,12 @@
 import { Link } from "react-router";
+import Button from "./Button/Button";
+import { FaArrowRight } from "react-icons/fa";
 
 const FoodCard = ({ food }) => {
   const { _id, foodName, expiredDate, foodQuantity, foodImage } = food;
 
   return (
-    <div className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+    <div className="bg-white rounded-md overflow-hidden hover:shadow-md transition-shadow duration-300">
       <figure className="w-full aspect-[4/3] overflow-hidden">
         <img
           src={foodImage}
@@ -28,11 +30,10 @@ const FoodCard = ({ food }) => {
             </span>
           </p>
         </div>
-
         <Link to={`/food/${_id}`}>
-          <button className="w-full bg-[#F4B400] text-[#1F2937] font-bold uppercase px-8 py-2 rounded-xl hover:bg-[#F4A400] transition-all">
-            View Details
-          </button>
+          <p className="flex items-center gap-1 text-z font-semibold text-[#2F855A] hover:text-[#f7ca18] underline underline-offset-4 decoration-2 transition-colors duration-300 cursor-pointer">
+            View Details <FaArrowRight />
+          </p>
         </Link>
       </div>
     </div>

@@ -16,8 +16,8 @@ const Home = () => {
   return (
     <div className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] max-w-full">
       <Banner />
-      <FeaturedFoods foods={foods} />
       <HowItWorks></HowItWorks>
+      <FeaturedFoods foods={foods} />
       <WhoWeServe></WhoWeServe>
     </div>
   );
