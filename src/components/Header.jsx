@@ -6,6 +6,7 @@ import logo from "../assets/icon.png";
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/available-foods', label: 'Available Foods' },
+  { to: '/about', label: 'About' },
 ];
 
 const Header = () => {
