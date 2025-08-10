@@ -25,22 +25,24 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-16 text-center">
-      <h2
-        className="text-3xl font-semibold mb-12 tracking-wide "
-        style={{ wordSpacing: "8px" }}
-      >
-        HOW IT WORKS
-      </h2>
-      <div className="mx-auto container grid grid-cols-1 md:grid-cols-3 gap-12">
-        {steps.map((step, index) => (
-          <div key={index} className="flex flex-col items-center px-10">
-            {step.icon}
-            <h3 className="text-lg font-semibold mb-3">{step.title}</h3>
-            <p className="text-gray-600">{step.description}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="mx-auto container py-16 px-4">
+      <section className="text-center">
+        <h2
+          className="text-3xl font-semibold mb-12 tracking-wide "
+          style={{ wordSpacing: "8px" }}
+        >
+          HOW IT WORKS
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
+          {steps.map((step, index) => (
+            <div key={index} className="flex flex-col items-center">
+              {step.icon}
+              <h3 className="text-lg font-semibold mb-3">{step.title}</h3>
+              <p className="text-gray-600">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

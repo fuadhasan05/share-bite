@@ -66,7 +66,7 @@ const handleFoodRequest = async (e) => {
 };
 
   return (
-    <div className="max-w-3xl mx-auto py-12 px-4">
+    <div className="container mx-auto py-12 px-4">
       <button
         onClick={() => navigate(-1)}
         className="mb-6 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition"

@@ -13,7 +13,7 @@ const WhoWeServe = () => {
 
   return (
     <section className="py-16">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <h2
           className="text-3xl font-semibold text-center mb-16"
           style={{ wordSpacing: "8px" }}
