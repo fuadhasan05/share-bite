@@ -6,6 +6,7 @@ import logo from "../assets/icon.png";
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/available-foods', label: 'Available Foods' },
+  { to: '/blogs', label: 'Blog' },
   { to: '/about', label: 'About' },
 ];
 
@@ -26,7 +27,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white w-full">
-      <nav className="container mx-auto px-4 flex items-center justify-between h-20">
+      <nav className="container mx-auto flex items-center justify-between h-20">
         {/* Logo and Title */}
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="Logo" className="w-12 h-12" />

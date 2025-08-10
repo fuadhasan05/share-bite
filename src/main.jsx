@@ -18,6 +18,7 @@ import UpdateFood from "./pages/UpdateFood";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorPage from "./pages/ErrorPage";
 import BlogDetails from "./pages/BlogDetails";
+import Blogs from "./pages/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,12 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <UpdateFood />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "blogs",
+        element: (
+          <Blogs/>
         ),
       },
       {

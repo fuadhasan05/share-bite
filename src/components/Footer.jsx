@@ -6,7 +6,7 @@ import logo from "../assets/icon.png";
 const Footer = () => {
   return (
     <footer className="text-gray-700 py-12">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-10">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
         
         {/* Left Section - Logo + Mission */}
         <div className="flex flex-col items-start max-w-md">
