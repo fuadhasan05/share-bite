@@ -13,7 +13,7 @@ const WhoWeServe = () => {
 
   return (
     <section className="py-16">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         <h2
           className="text-3xl font-semibold text-center mb-16"
           style={{ wordSpacing: "8px" }}
@@ -21,7 +21,7 @@ const WhoWeServe = () => {
           WHO DO WE SERVE?
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Gardener Card */}
           <motion.div
             whileHover="hover"

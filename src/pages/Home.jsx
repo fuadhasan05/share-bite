@@ -3,8 +3,8 @@ import Banner from "../components/Banner";
 import FeaturedFoods from "../components/FeaturedFoods";
 import HowItWorks from "../components/HowItWorks";
 import WhoWeServe from "../components/WhoWeServe";
-import Footer from "../components/Footer";
 import { useEffect } from "react";
+import Blog from "../components/Blog";
 
 const Home = () => {
   // Set dynamic title
@@ -19,6 +19,7 @@ const Home = () => {
       <HowItWorks></HowItWorks>
       <FeaturedFoods foods={foods} />
       <WhoWeServe></WhoWeServe>
+      <Blog></Blog>
     </div>
   );
 };

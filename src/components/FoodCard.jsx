@@ -31,7 +31,7 @@ const FoodCard = ({ food }) => {
           </p>
         </div>
         <Link to={`/food/${_id}`}>
-          <p className="flex items-center gap-1 text-z font-semibold text-[#2F855A] hover:text-[#f7ca18] underline underline-offset-4 decoration-2 transition-colors duration-300 cursor-pointer">
+          <p className="flex items-center font-semibold gap-1 text-[#2F855A] hover:underline underline-offset-2 cursor-pointer">
             View Details <FaArrowRight />
           </p>
         </Link>

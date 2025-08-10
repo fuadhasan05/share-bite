@@ -12,7 +12,7 @@ const FeaturedFoods = ({ foods }) => {
 
   return (
     <section className="py-16">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         <h2
           className="text-3xl font-semibold text-center mb-4"
           style={{ wordSpacing: "8px" }}
