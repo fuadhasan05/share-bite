@@ -7,7 +7,6 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/available-foods', label: 'Available Foods' },
   { to: '/blogs', label: 'Blog' },
-  { to: '/about', label: 'About' },
 ];
 
 const Header = () => {
@@ -59,12 +58,12 @@ const Header = () => {
                   src={user.photoURL}
                   alt="avatar"
                   referrerPolicy="no-referrer"
-                  className="w-10 h-10 rounded-xl object-cover border"
+                  className="w-10 h-10 rounded-full object-cover border"
                 />
               )}
               <button
                 onClick={logOut}
-                className="px-4 py-2 rounded-xl text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
+                className="px-4 py-2 rounded-md text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
               >
                 Logout
               </button>
@@ -73,13 +72,13 @@ const Header = () => {
             <>
               <Link
                 to="/signin"
-                className="px-4 py-2 rounded-xl text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
+                className="px-4 py-2 rounded-md text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="px-4 py-2 rounded-xl bg-[#2F855A] text-white hover:bg-[#276749] transition"
+                className="px-4 py-2 rounded-md bg-[#2F855A] text-white hover:bg-[#276749] transition"
               >
                 Register
               </Link>
@@ -151,7 +150,7 @@ const Header = () => {
                     setMenuOpen(false);
                     logOut();
                   }}
-                  className="w-full px-4 py-2 rounded-xl text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
+                  className="w-full px-4 py-2 rounded-md text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
                 >
                   Logout
                 </button>
@@ -160,14 +159,14 @@ const Header = () => {
                   <Link
                     to="/signin"
                     onClick={() => setMenuOpen(false)}
-                    className="w-full px-4 py-2 rounded-xl text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
+                    className="w-full px-4 py-2 rounded-md text-[#2F855A] border border-[#2F855A] hover:bg-[#E6F4EA] transition"
                   >
                     Login
                   </Link>
                   <Link
                     to="/signup"
                     onClick={() => setMenuOpen(false)}
-                    className="w-full px-4 py-2 rounded-xl bg-[#2F855A] text-white hover:bg-[#276749] transition"
+                    className="w-full px-4 py-2 rounded-md bg-[#2F855A] text-white hover:bg-[#276749] transition"
                   >
                     Register
                   </Link>

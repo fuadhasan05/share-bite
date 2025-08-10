@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Button from "../components/Button/Button";
 
 const UpdateFood = () => {
   // Set dynamic title
@@ -71,7 +72,8 @@ const UpdateFood = () => {
   }
 
   return (
-    <div className="max-w-xl mx-auto mt-10 bg-white p-8 rounded-lg shadow">
+    <div className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] max-w-full py-16">
+      <div className="container mx-auto px-4 py-12 bg-white p-8 rounded-md">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
         Update Food Information
       </h2>
@@ -132,13 +134,9 @@ const UpdateFood = () => {
             required
           />
         </div>
-        <button
-          type="submit"
-          className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded transition"
-        >
-          Update Food
-        </button>
+        <Button variant="primary" className="w-full mt-12" type="submit">Update Food</Button>
       </form>
+    </div>
     </div>
   );
 };

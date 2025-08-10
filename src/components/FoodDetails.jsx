@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Button from "./Button/Button";
 
 const FoodDetails = () => {
   const food = useLoaderData();
@@ -25,55 +26,50 @@ const FoodDetails = () => {
   // console.log(food);
 
   // handle food request submission
-const handleFoodRequest = async (e) => {
-  e.preventDefault();
-  const requestInfo = {
-    requesterEmail: user?.email,
-    notes,
-    requestDate,
+  const handleFoodRequest = async (e) => {
+    e.preventDefault();
+    const requestInfo = {
+      requesterEmail: user?.email,
+      notes,
+      requestDate,
+    };
+
+    try {
+      const token = await user.getIdToken(); // Get Firebase token
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/place-request/${_id}`,
+        requestInfo,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      Swal.fire({
+        title: "Success!",
+        text: "Food requested successfully.",
+        icon: "success",
+        confirmButtonColor: "#3CB371",
+      });
+
+      setNotes("");
+      document.getElementById("foodRequestModal").close();
+      navigate("/my-requested-foods");
+    } catch (err) {
+      Swal.fire({
+        title: "Error!",
+        text: err.response?.data?.message || "Failed to request food.",
+        icon: "error",
+        confirmButtonColor: "#d33",
+      });
+    }
   };
 
-   try {
-    const token = await user.getIdToken(); // Get Firebase token
-    await axios.post(
-      `${import.meta.env.VITE_API_URL}/place-request/${_id}`,
-      requestInfo,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    Swal.fire({
-      title: "Success!",
-      text: "Food requested successfully.",
-      icon: "success",
-      confirmButtonColor: "#3CB371",
-    });
-
-    setNotes("");
-    document.getElementById("foodRequestModal").close();
-    navigate("/my-requested-foods");
-  } catch (err) {
-    Swal.fire({
-      title: "Error!",
-      text: err.response?.data?.message || "Failed to request food.",
-      icon: "error",
-      confirmButtonColor: "#d33",
-    });
-  }
-};
-
   return (
-    <div className="container mx-auto py-12 px-4">
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-6 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition"
-      >
-        &larr; Back
-      </button>
-      <div className=" rounded-lg flex flex-col md:flex-row overflow-hidden shadow-lg border border-[#E6F4EA]">
+    <div className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] max-w-full py-16">
+      <div className="container mx-auto py-12 px-4">
+      <div className=" rounded-lg flex flex-col md:flex-row overflow-hidden border border-[#E6F4EA]">
         <img
           src={foodImage}
           alt={foodName || "Food Image"}
@@ -101,16 +97,14 @@ const handleFoodRequest = async (e) => {
               </div>
             </div>
             <div className="flex gap-4">
-              {/* MODEL */}
-              <button
-                className="mt-4 px-6 py-2 bg-[#2F855A] text-white rounded-xl hover:bg-green-700 transition"
+              <Button
+                variant="primary"
                 onClick={() =>
                   document.getElementById("foodRequestModal").showModal()
                 }
               >
                 Request
-              </button>
-
+              </Button>
               <dialog id="foodRequestModal" className="modal">
                 <div className="modal-box w-full max-w-2xl">
                   <h3 className="font-bold text-2xl mb-4">
@@ -171,22 +165,22 @@ const handleFoodRequest = async (e) => {
                     />
 
                     <div className="modal-action">
-                      <button
+                      <Button
+                        variant="primary"
                         onClick={handleFoodRequest}
                         type="submit"
-                        className="px-6 py-2 bg-[#2F855A] text-white rounded-xl hover:bg-green-700 transition"
                       >
                         Request
-                      </button>
-                      <button
-                        type="button"
+                      </Button>
+                      <Button
+                        variant="secondary"
                         onClick={() =>
                           document.getElementById("foodRequestModal").close()
                         }
-                        className="ml-3 px-6 py-2 bg-gray-300 text-gray-800 rounded-xl hover:bg-gray-400 transition"
+                        type="button"
                       >
                         Cancel
-                      </button>
+                      </Button>
                     </div>
                   </form>
                 </div>
@@ -195,6 +189,7 @@ const handleFoodRequest = async (e) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthProvider";
 import { useNavigate } from "react-router";
 import useAxiosSecure from "../utils/useAxiosSecure";
+import Button from "../components/Button/Button";
 
 const AddFood = () => {
   // Set dynamic title
@@ -44,7 +45,8 @@ const AddFood = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <div className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] max-w-full">
+      <div className="container mx-auto px-4 py-12">
       <div className="text-center mb-10 space-y-4">
         <h1 className="text-5xl font-extrabold text-green-800">Add Food</h1>
         <p className="text-gray-600 text-lg max-w-xl mx-auto">
@@ -157,13 +159,9 @@ const AddFood = () => {
             />
           </div>
         </fieldset>
-
-        <input
-          type="submit"
-          value="Add Food"
-          className="btn bg-[#2F855A] text-white rounded-xl w-full hover:bg-green-700 transition-all"
-        />
+        <Button variant="primary" className="w-full" type="submit">Add Food</Button>
       </form>
+    </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import useAxiosSecure from "../utils/useAxiosSecure"; 
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const FoodRequest = () => {
   useEffect(() => {
@@ -31,20 +32,24 @@ const FoodRequest = () => {
   }, [user?.email, axiosSecure]);
 
   return (
-    <div className="p-4 overflow-x-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center">
+    <div className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] max-w-full py-16">
+      <div className="px-4 min-h-[70vh]">
+      <h2
+          className="text-3xl font-semibold text-center mb-4"
+          style={{ wordSpacing: "8px" }}
+        >
         My Requested Foods
       </h2>
 
       {loading ? (
-        <div className="text-center text-gray-500 py-8">Loading...</div>
+        <LoadingSpinner/>
       ) : requestedFoods.length === 0 ? (
         <div className="text-center text-gray-500 py-8">
           No requested foods found.
         </div>
       ) : (
-        <table className="table table-zebra w-full">
-          <thead className="bg-green-100 text-gray-700">
+        <table className="table table-zebra container mx-auto px-4 mt-12">
+          <thead className="bg-white text-gray-900">
             <tr>
               <th>Food Name</th>
               <th>Donor Name</th>
@@ -79,6 +84,7 @@ const FoodRequest = () => {
           </tbody>
         </table>
       )}
+    </div>
     </div>
   );
 };
