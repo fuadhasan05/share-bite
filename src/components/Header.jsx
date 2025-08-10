@@ -7,6 +7,7 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/available-foods', label: 'Available Foods' },
   { to: '/blogs', label: 'Blog' },
+  { to: '/about', label: 'About' },
 ];
 
 const Header = () => {

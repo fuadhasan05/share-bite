@@ -19,6 +19,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorPage from "./pages/ErrorPage";
 import BlogDetails from "./pages/BlogDetails";
 import Blogs from "./pages/Blogs";
+import About from "./pages/Abouts/About";
+import FAQ from "./pages/Abouts/FAQ";
+import PrivacyPolicy from "./pages/Abouts/PrivacyPolicy.Jsx";
+import Contact from "./pages/Abouts/Contact";
+
 
 const router = createBrowserRouter([
   {
@@ -95,6 +100,30 @@ const router = createBrowserRouter([
         path: "blogs/:id",
         element: (
           <BlogDetails/>
+        ),
+      },
+      {
+        path: "about",
+        element: (
+          <About/>
+        ),
+      },
+      {
+        path: "faq",
+        element: (
+          <FAQ/>
+        ),
+      },
+      {
+        path: "privacy-policy",
+        element: (
+          <PrivacyPolicy/>
+        ),
+      },
+      {
+        path: "contact",
+        element: (
+          <Contact></Contact>
         ),
       },
       {

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useRouteError } from "react-router";
+import Button from "../components/Button/Button";
 
 const ErrorPage = () => {
   const error = useRouteError();
@@ -19,9 +20,9 @@ const ErrorPage = () => {
           {error?.error?.message || "Something Went Wrong!"}
         </p>
         <Link to="/">
-          <button className="px-8 mt-5 py-2 btn bg-green-600 rounded hover:bg-green-700 cursor-pointer">
+          <Button variant="primary" className="mt-5">
             Browse Home
-          </button>
+          </Button>
         </Link>
       </div>
     </>
