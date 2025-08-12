@@ -14,6 +14,11 @@ const Blogs = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+   // Set dynamic title
+    useEffect(() => {
+      document.title = "Share Bite - Blogs";
+    }, []);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/blogs`)
       .then((res) => {

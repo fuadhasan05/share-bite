@@ -40,7 +40,8 @@ const WhoWeServe = () => {
                   Do you have extra fruits, vegetables, or herbs? Share them
                   with those in need.
                 </p>
-                <Link to="/addfood">
+                <Link to="/signup"
+                onClick={() => window.scrollTo(0, 0)}>
                   <Button variant="secondary" className="w-full">
                     Donate Food
                   </Button>
@@ -73,7 +74,8 @@ const WhoWeServe = () => {
                 <p className="text-gray-600 mb-6">
                   Register your pantry and receive fresh food from local donors.
                 </p>
-                <Link to="/signup">
+                <Link to="/signup"
+                onClick={() => window.scrollTo(0, 0)}>
                   <Button variant="secondary" className="w-full">
                     Register Pantry
                   </Button>
@@ -107,7 +109,8 @@ const WhoWeServe = () => {
                   Need food? Use our tool to find nearby available meals and
                   pantries.
                 </p>
-                <Link to="/available-foods">
+                <Link to="/available-foods"
+                onClick={() => window.scrollTo(0, 0)}>
                   <Button variant="secondary" className="w-full">
                     Find Food
                   </Button>

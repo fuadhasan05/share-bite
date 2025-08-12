@@ -36,8 +36,9 @@ export default function FAQ() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-center mb-8 text-green-700">
+    <div className="max-w-4xl mx-auto px-4 py-16">
+      <h1 className="text-3xl font-semibold text-center mb-12"
+          style={{ wordSpacing: "8px" }}>
         Frequently Asked Questions
       </h1>
 

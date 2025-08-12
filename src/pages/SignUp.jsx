@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../contexts/AuthProvider";
+import Button from "../components/Button/Button";
 
 const Register = () => {
   const { createUser, setUser, googleLogin } = useContext(AuthContext);
@@ -75,16 +76,27 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="flex items-center justify-center px-4 bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] max-w-full py-16">
       {/* Toast container for notifications */}
       <ToastContainer position="top-right" autoClose={1800} />
 
-      <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg border border-[#E6F4EA]">
+      <div className="max-w-lg w-full bg-white p-8 rounded-md shadow-lg border border-[#E6F4EA]">
         {/* Page title */}
-        <h2 className="text-3xl font-bold text-center mb-6 text-[#3CB371]">
+        <h2 className="text-3xl font-bold text-center mb-6">
           Create your account
         </h2>
-
+        {/* Demo User */}
+        <div className="mb-4 p-3 bg-yellow-100 text-yellow-900 rounded border border-yellow-300">
+          <p className="mb-2">
+            <strong>Use this in Signin form, if you don't want to create account:</strong>
+          </p>
+          <p>
+            Email: <code>sharebite@admin.com</code>
+          </p>
+          <p>
+            Password: <code>Pa$$w0rd!</code>
+          </p>
+        </div>
         {/* Registration form */}
         <form onSubmit={handleRegister} className="space-y-5">
           {/* Name input */}
@@ -101,7 +113,7 @@ const Register = () => {
               type="text"
               required
               placeholder="Your name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CB371] bg-[#F8FBF9]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3CB371] bg-[#F8FBF9]"
             />
           </div>
 
@@ -119,7 +131,7 @@ const Register = () => {
               type="email"
               required
               placeholder="you@example.com"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CB371] bg-[#F8FBF9]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3CB371] bg-[#F8FBF9]"
               autoComplete="email"
             />
           </div>
@@ -138,7 +150,7 @@ const Register = () => {
               type="text"
               required
               placeholder="Link to your profile picture"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CB371] bg-[#F8FBF9]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3CB371] bg-[#F8FBF9]"
             />
           </div>
 
@@ -156,7 +168,7 @@ const Register = () => {
               type="password"
               required
               placeholder="Create a password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CB371] bg-[#F8FBF9]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3CB371] bg-[#F8FBF9]"
               autoComplete="new-password"
             />
           </div>
@@ -168,12 +180,9 @@ const Register = () => {
           {error && <p className="text-xs text-red-600">{error}</p>}
 
           {/* Submit button */}
-          <button
-            type="submit"
-            className="w-full bg-[#3CB371] text-white py-2 rounded-lg font-semibold hover:bg-[#319e5c] transition duration-200 shadow"
-          >
+          <Button type="submit" className="w-full">
             Register
-          </button>
+          </Button>
         </form>
 
         {/* Divider */}
@@ -184,7 +193,7 @@ const Register = () => {
         {/* Google login button */}
         <button
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg bg-white hover:bg-[#E6F4EA] transition duration-200 font-medium text-[#222] shadow"
+          className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md bg-white hover:bg-[#E6F4EA] transition duration-200 font-medium text-[#222] shadow"
         >
           <FcGoogle size={20} />
           Continue with Google

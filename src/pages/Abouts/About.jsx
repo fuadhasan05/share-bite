@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router";
 import aboutImg from "../../assets/food-banner.jpg"; 
+import { FaArrowAltCircleDown } from "react-icons/fa";
 
 const About = () => {
+  // Set dynamic title
+    useEffect(() => {
+      document.title = "Share Bite - About Us";
+    }, []);
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
+    <div className="bg-gradient-to-br from-[#E6F4EA] via-[#F0FFF4] to-[#E6F4EA] max-w-full">
+      <section className="container mx-auto px-4 py-16">
       {/* Heading */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-green-800 mb-4">
+        <h1 className="text-3xl font-semibold text-center mb-4"
+          style={{ wordSpacing: "8px" }}>
           About ShareBite
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -21,7 +28,7 @@ const About = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Text Section */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-semibold text-green-700">
+          <h2 className="text-2xl font-semibold">
             Our Mission
           </h2>
           <p className="text-gray-700 leading-relaxed">
@@ -30,7 +37,7 @@ const About = () => {
             for donors to share surplus food, and for recipients to access meals quickly.
           </p>
 
-          <h2 className="text-2xl font-semibold text-green-700">
+          <h2 className="text-2xl font-semibold">
             How It Works
           </h2>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -39,7 +46,7 @@ const About = () => {
             <li>Recipients request meals and arrange safe collection or delivery.</li>
           </ul>
 
-          <h2 className="text-2xl font-semibold text-green-700">
+          <h2 className="text-2xl font-semibold">
             Why Choose ShareBite?
           </h2>
           <p className="text-gray-700 leading-relaxed">
@@ -54,15 +61,15 @@ const About = () => {
           <img
             src={aboutImg}
             alt="About ShareBite"
-            className="w-full h-auto rounded-xl shadow-lg"
+            className="w-full h-auto rounded-md"
           />
         </div>
       </div>
 
       {/* Extra Links Section */}
       <div className="mt-16 border-t border-gray-200 pt-10">
-        <h2 className="text-2xl font-semibold text-green-700 mb-6 text-center">
-          Learn More
+        <h2 className="text-2xl font-semibold mb-6 text-center flex items-center justify-center gap-2">
+          Learn More <FaArrowAltCircleDown></FaArrowAltCircleDown>
         </h2>
         <div className="flex flex-wrap justify-center gap-4 text-sm font-medium">
           <Link
@@ -98,6 +105,7 @@ const About = () => {
         </div>
       </div>
     </section>
+    </div>
   );
 };
 
