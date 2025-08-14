@@ -8,7 +8,7 @@ ShareBite is a community-driven food sharing platform built with React, Vite, Ex
 
 ## Preview
 
-![share-bite Screenshot](/sharebite.png)
+![share-bite Screenshot](/public/sharebite.png)
 
 ## Features
 
