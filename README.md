@@ -8,7 +8,7 @@ ShareBite is a community-driven food sharing platform built with React, Vite, Ex
 
 ## Preview
 
-![share-bite Screenshot](public/screenshot.png)
+![share-bite Screenshot](/sharebite.png)
 
 ## Features
 
@@ -38,34 +38,13 @@ ShareBite is a community-driven food sharing platform built with React, Vite, Ex
 1. **Clone the repository:**
    ```bash
    git clone hhttps://github.com/fuadhasan05/share-bite
-   cd sharebite
+   cd share-bite
    ```
 
-2. **Backend Setup:**
-   ```bash
-   cd server
-   npm install
-   # Add your MongoDB URI and Firebase credentials in .env and admin-key.json
-   npm start
-   ```
-
-3. **Frontend Setup:**
-   ```bash
-   cd client
-   npm install
-   npm run dev
-   ```
-
-4. **Environment Variables:**
+2. **Environment Variables:**
    - Create a `.env` file in both `server` and `client` directories.
    - Set `VITE_API_URL` in `client/.env` to your backend URL.
 
-## Folder Structure
-
-```
-/client   # React frontend
-/server   # Express backend
-```
 
 ## Usage
 
