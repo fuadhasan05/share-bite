@@ -40,11 +40,27 @@ ShareBite is a community-driven food sharing platform built with React, Vite, Ex
    git clone hhttps://github.com/fuadhasan05/share-bite
    cd share-bite
    ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
 
-2. **Environment Variables:**
-   - Create a `.env` file in both `server` and `client` directories.
-   - Set `VITE_API_URL` in `client/.env` to your backend URL.
+3. **Set up environment variables:**
+   - Copy `.env.local.example` to `.env.local`.
+   - Fill in your Firebase and Stripe credentials in `.env.local`.
 
+4. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+
+5. **Open the app in your browser:**
+   - Visit [http://localhost:5173](http://localhost:5173)
+
+6. **(Optional) Build for production:**
+   ```sh
+   npm run build
+   ```
 
 ## Usage
 
